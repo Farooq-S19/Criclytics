@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}Criclytics - AI Cricket Analysis{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content container">
+        <h1>Cricket Analytics, Reimagined.</h1>
+        <p>Leveraging AI to predict player performance, forecast match outcomes, and visualize success like never before.</p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('player_analysis_page') }}" class="btn btn-primary">Analyze a Player</a>
+            <a href="{{ url_for('team_prediction_page') }}" class="btn btn-secondary">Predict a Match</a>
+        </div>
+    </div>
+    <div class="animated-bg"></div>
+</section>
+
+<!-- Features Section -->
+<section class="features container">
+    <h2 class="section-title">Core Features</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon"></div>
+            <h3>Player Performance Analysis</h3>
+            <p>Dive deep into player statistics with interactive charts. Visualize strengths and weaknesses through radar, bar, and pie graphs.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"></div>
+            <h3>AI-Powered Player Prediction</h3>
+            <p>Our Random Forest model analyzes historical data to forecast a player's likely score range for their next match, with a clear confidence score.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"></div>
+            <h3>Team Win Prediction</h3>
+            <p>Pit any two teams against each other. We'll predict the winner by aggregating player impact scores and explain the reasoning behind the forecast.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Criclytics{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body data-theme="dark" class="{% block body_class %}{% endblock %}">
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="{{ url_for('index') }}" class="navbar-logo">
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Criclytics Logo">
+                Criclytics
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">Home</a></li>
+                <li><a href="{{ url_for('player_analysis_page') }}" class="{{ 'active' if request.endpoint == 'player_analysis_page' else '' }}">Player Analysis</a></li>
+                <li><a href="{{ url_for('team_prediction_page') }}" class="{{ 'active' if request.endpoint == 'team_prediction_page' else '' }}">Team Prediction</a></li>
+            </ul>
+            <div class="theme-switcher">
+                <svg id="theme-toggle-icon" ...></svg> <!-- Icon SVG from previous answer -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Powered by a Custom AI Prediction Model.</p>
+            &copy; 2024 Criclytics. All Rights Reserved.
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

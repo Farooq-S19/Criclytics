@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}Player Analysis - Criclytics{% endblock %}
+{% block body_class %}body-player-page{% endblock %}
+
+{% block content %}
+<div class="container page-content">
+    <div class="analysis-header">
+        <h1>Player Performance & Prediction</h1>
+        <p>Select a player to view their profile, statistics, and AI-powered match predictions.</p>
+        <div class="model-info" style="margin-bottom: 2%;">Model Accuracy (on validation): {{ model_accuracy }}%</div>
+    <div class="search-container">
+       <select id="player-select" class="styled-select">
+            <!-- JavaScript will populate this list -->
+            <option value="" disabled selected>Loading Players...</option>
+        </select>
+    </div>
+
+    <div id="loader" class="loader" style="display: none;"></div>
+    <div id="player-dashboard" class="player-dashboard" style="display: none;">
+        <!-- Player Card and Prediction (Left Column) -->
+        <div class="player-main-info">
+            <!-- Player Profile Card -->
+            <div id="player-profile-card" class="player-profile-card">
+                <!-- JS will populate this -->
+            </div>
+            <!-- AI Prediction Box -->
+            <div id="ai-prediction-box" class="ai-prediction-box">
+                <!-- JS will populate this -->
+            </div>
+        </div>
+
+        <!-- Charts (Right Column) -->
+        <div class="player-charts-grid">
+            <div class="chart-card">
+                <h3>Recent Performance</h3>
+                <canvas id="bar-chart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Performance Breakdown (Batting)</h3>
+                <canvas id="pie-chart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Skills Radar</h3>
+                <canvas id="radar-chart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock %}

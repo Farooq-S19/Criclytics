@@ -1,0 +1,90 @@
+<!-- --- START OF FILE team_prediction.html --- -->
+
+{% extends "layout.html" %}
+
+{% block title %}Team Prediction - Criclytics{% endblock %}
+{% block body_class %}body-team-page{% endblock %}
+
+{% block content %}
+<div class="container page-content">
+    <div class="analysis-header">
+        <h1>Team vs. Team Prediction</h1>
+        <p>Select two teams to forecast the match winner based on player impact analysis.</p>
+    </div>
+
+    <!-- This is the one and only team selector section -->
+    <div class="team-selector-container">
+        <div class="team-selector">
+            <label for="team1-select">Team A</label>
+            <select id="team1-select" class="styled-select">
+                <!-- JavaScript will populate this -->
+                <option value="" disabled selected>Loading Teams...</option>
+            </select>
+        </div>
+        <div class="vs-icon">VS</div>
+        <div class="team-selector">
+            <label for="team2-select">Team B</label>
+            <select id="team2-select" class="styled-select">
+                <!-- JavaScript will populate this -->
+                <option value="" disabled selected>Loading Teams...</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- This is the one and only predict button -->
+    <div class="predict-button-container">
+        <button id="predict-team-btn" class="btn btn-primary">Predict Winner</button>
+    </div>
+
+    <div id="team-loader" class="loader" style="display: none;"></div>
+    
+    <!-- Prediction Result Section (this was correct) -->
+    <section id="team-prediction-result" class="team-prediction-result" style="display: none;">
+        <!-- Left Column: Winner and Probabilities -->
+        <div class="winner-column">
+            <div class="winner-announcement">
+                <div class="ai-says-badge">AI SAYS</div>
+                <p>Predicted Winner</p>
+                <h2 id="winner-name"></h2>
+                <div id="win-probability" class="win-probability">
+                    <p>with <strong id="win-probability-text"></strong> confidence</p>
+                </div>
+            </div>
+            <div class="probability-bars">
+                <div id="team1-prob-text"></div>
+                <div class="prob-bar-container">
+                    <div id="team1-prob-bar" class="prob-bar team1"></div>
+                </div>
+                 <div id="team2-prob-text"></div>
+                <div class="prob-bar-container">
+                    <div id="team2-prob-bar" class="prob-bar team2"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: Reasoning and Player Lists -->
+        <div class="details-column">
+            <div class="prediction-explanation">
+                <h3>Analysis Breakdown</h3>
+                <p id="prediction-reasoning"></p>
+            </div>
+            
+            <!-- NEW: Team Details Summary Table Container -->
+            <div class="team-details-summary-container">
+                <div id="team1-summary" class="team-summary-card"></div>
+                <div id="team2-summary" class="team-summary-card"></div>
+            </div>
+
+            <div class="team-rosters">
+                <div id="team1-players" class="player-list-card"></div>
+                <div id="team2-players" class="player-list-card"></div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock %}
+<!-- --- END OF FILE team_prediction.html --- -->
