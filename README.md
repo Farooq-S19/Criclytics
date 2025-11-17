@@ -24,32 +24,7 @@ Machine Learning: Scikit-learn, Pandas, Joblib
 Frontend: HTML, CSS, JavaScript (with Chart.js for data visualization)
 Data: CSV file (players_data.csv) for static data storage.
 Project Structure
-code
-Code
-criclytics-flask/
-│
-├── models/
-│   ├── player_score_model.pkl    # (Generated after training)
-│   └── feature_scaler.pkl        # (Generated after training)
-│
-├── static/
-│   ├── css/
-│   │   └── style.css
-│   ├── data/
-│   │   └── players_data.csv      # <--- IMPORTANT: Place your data file here
-│   └── js/
-│       ├── main.js
-│       └── chart.js
-│
-├── templates/
-│   ├── index.html
-│   ├── player_analysis.html
-│   └── team_prediction.html
-│
-├── app.py                        # Main Flask application file
-├── model.py                      # Model training and prediction logic
-├── requirements.txt              # Project dependencies
-└── README.md                     # This file
+
 Setup and Installation
 Follow these steps to get the Criclytics application running on your local machine.
 Prerequisites
@@ -122,3 +97,4 @@ Incorporate real-time data using APIs from sports data providers.
 Add user authentication to save favorite players or teams.
 Use Arrow Up and Arrow Down to select a turn, Enter to jump to it, and Escape to return to the chat.
 Start typing a prompt
+
