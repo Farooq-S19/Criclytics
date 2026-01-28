@@ -68,33 +68,4 @@ Once the model files are generated, you can start the Flask server.
 code
 Bash
 flask run
-# or
-python app.py
-The application will be running at http://127.0.0.1:5000. Open this URL in your web browser to use Criclytics.
-How It Works
-Player Score Prediction Model
-The player prediction is powered by a RandomForestRegressor model trained on the players_data.csv dataset.
-Training (model.py):
-The script loads and cleans the player data.
-A target variable (Calculated_Target_Score) is engineered based on a weighted combination of a player's Average, SR, and Highest score.
-The model is trained using the following features: ['Average', 'SR', 'BF', 'Highest', '100', '6'].
-The trained model and a StandardScaler (for feature scaling) are saved as .pkl files.
-Prediction (app.py):
-When a user selects a player, the server loads the saved model and scaler.
-It extracts the required features for that player from the dataset.
-The features are scaled using the saved scaler.
-The model predicts a score, which is then formatted into a user-friendly range (e.g., "35 - 50 runs").
-Team Win Prediction Logic
-The team prediction is based on a heuristic algorithm that calculates an "impact score" for each player and aggregates it for the entire team.
-Impact Score: Each player's strength is calculated as a weighted sum of their key stats (Average, SR, runs per inning, and boundary-hitting capability).
-Team Strength: The total strength of a team is the sum of the impact scores of all its players.
-Win Probability: The win probability is calculated based on the ratio of one team's strength to the combined strength of both teams.
-Future Enhancements
-Integrate a database (like SQLite or PostgreSQL) for more robust data management.
-Add analysis for bowlers.
-Use a more advanced model (e.g., XGBoost, Neural Networks) for predictions.
-Incorporate real-time data using APIs from sports data providers.
-Add user authentication to save favorite players or teams.
-Use Arrow Up and Arrow Down to select a turn, Enter to jump to it, and Escape to return to the chat.
-Start typing a prompt
 
